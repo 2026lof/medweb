@@ -9,15 +9,19 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --primary: #1a5f7a;
-      --secondary: #57c5b6;
-      --accent: #159895;
-      --bg: #f8fffe;
-      --text: #2d3748;
-      --light-accent: #e6f7f5;
+      --primary: #244c7c;
+      --secondary: #d9e6f2;
+      --accent: #b85450;
+      --bg: #fafcfe;
+      --text: #22313f;
+      --light-accent: #eaf1f7;
+      --surface: #ffffff;
+      --surface-alt: #f3f7fb;
+      --border: #c9d3dd;
+      --muted: #5f6f7f;
       --white: #ffffff;
-      --shadow: 0 4px 20px rgba(26, 95, 122, 0.1);
-      --shadow-hover: 0 8px 30px rgba(26, 95, 122, 0.18);
+      --shadow: 0 10px 30px rgba(36, 76, 124, 0.08);
+      --shadow-hover: 0 18px 45px rgba(36, 76, 124, 0.14);
     }
 
     * {
@@ -32,7 +36,9 @@
 
     body {
       font-family: 'Source Sans 3', sans-serif;
-      background: var(--bg);
+      background:
+        radial-gradient(circle at top left, rgba(184, 84, 80, 0.08), transparent 30%),
+        linear-gradient(180deg, #ffffff 0%, var(--bg) 35%, #f6f9fc 100%);
       color: var(--text);
       line-height: 1.6;
     }
@@ -55,8 +61,10 @@
       top: 0;
       left: 0;
       right: 0;
-      background: var(--white);
-      box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 2px 20px rgba(34, 49, 63, 0.08);
+      border-bottom: 1px solid rgba(201, 211, 221, 0.7);
       z-index: 1000;
       /*padding: 16px 0;*/
     }
@@ -118,7 +126,7 @@
     .btn {
       display: inline-block;
       padding: 12px 28px;
-      background: linear-gradient(135deg, var(--primary), var(--accent));
+      background: linear-gradient(135deg, var(--primary), #3d6798);
       color: var(--white);
       text-decoration: none;
       border-radius: 50px;
@@ -129,6 +137,15 @@
       font-size: 1rem;
     }
 
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), #ca6a63);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: linear-gradient(135deg, #a74946, var(--accent));
+    }
+
     .btn:hover {
       transform: translateY(-2px);
       box-shadow: var(--shadow-hover);
@@ -137,6 +154,7 @@
     .btn-light {
       background: var(--white);
       color: var(--primary);
+      border: 1px solid rgba(36, 76, 124, 0.12);
     }
 
     .btn-light:hover {
@@ -164,7 +182,10 @@
       display: flex;
       align-items: center;
       padding-top: 80px;
-      background: linear-gradient(135deg, var(--light-accent) 0%, var(--bg) 50%, #d4f1ec 100%);
+      background:
+        radial-gradient(circle at 18% 22%, rgba(184, 84, 80, 0.12), transparent 22%),
+        radial-gradient(circle at 82% 20%, rgba(36, 76, 124, 0.14), transparent 24%),
+        linear-gradient(135deg, #f7fafd 0%, var(--light-accent) 48%, #edf3f8 100%);
       position: relative;
       overflow: hidden;
     }
@@ -176,7 +197,7 @@
       right: -20%;
       width: 600px;
       height: 600px;
-      background: radial-gradient(circle, rgba(87, 197, 182, 0.15) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(36, 76, 124, 0.12) 0%, transparent 70%);
       border-radius: 50%;
     }
 
@@ -199,7 +220,7 @@
 
     .hero p {
       font-size: 1.25rem;
-      color: #4a5568;
+      color: var(--muted);
       margin-bottom: 32px;
       max-width: 480px;
     }
@@ -217,11 +238,12 @@
     }
 
     .hero-card {
-      background: var(--white);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(243, 247, 251, 0.96));
       border-radius: 24px;
       padding: 40px;
       box-shadow: var(--shadow);
       position: relative;
+      border: 1px solid rgba(201, 211, 221, 0.55);
     }
 
     .hero-card::before {
@@ -231,9 +253,9 @@
       right: -20px;
       width: 100px;
       height: 100px;
-      background: var(--secondary);
+      background: var(--accent);
       border-radius: 50%;
-      opacity: 0.3;
+      opacity: 0.16;
     }
 
     .hero-stats {
@@ -254,7 +276,7 @@
     }
 
     .stat-label {
-      color: #718096;
+      color: var(--muted);
       font-size: 0.9rem;
     }
 
@@ -275,7 +297,7 @@
     }
 
     .section-header p {
-      color: #718096;
+      color: var(--muted);
       max-width: 600px;
       margin: 0 auto;
       font-size: 1.1rem;
@@ -293,30 +315,32 @@
     }
 
     .service-card {
-      background: var(--bg);
+      background: linear-gradient(180deg, var(--surface) 0%, var(--surface-alt) 100%);
       border-radius: 20px;
       padding: 36px;
       text-align: center;
       transition: all 0.3s ease;
-      border: 2px solid transparent;
+      border: 1px solid rgba(201, 211, 221, 0.8);
+      border-top: 4px solid var(--primary);
     }
 
     .service-card:hover {
       transform: translateY(-8px);
       box-shadow: var(--shadow-hover);
-      border-color: var(--secondary);
+      border-color: rgba(36, 76, 124, 0.22);
     }
 
     .service-icon {
       width: 72px;
       height: 72px;
-      background: linear-gradient(135deg, var(--light-accent), var(--secondary));
+      background: linear-gradient(135deg, rgba(184, 84, 80, 0.12), rgba(36, 76, 124, 0.16));
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       margin: 0 auto 24px;
       font-size: 1.75rem;
+      color: var(--accent);
     }
 
     .service-card h3 {
@@ -326,13 +350,13 @@
     }
 
     .service-card p {
-      color: #718096;
+      color: var(--muted);
       font-size: 0.95rem;
     }
 
     /* About */
     .about {
-      background: linear-gradient(180deg, var(--bg) 0%, var(--light-accent) 100%);
+      background: linear-gradient(180deg, var(--bg) 0%, #eef4f9 100%);
     }
 
     .about .container {
@@ -358,9 +382,9 @@
       right: -30px;
       width: 200px;
       height: 200px;
-      background: var(--secondary);
+      background: linear-gradient(135deg, var(--accent), #d9a19d);
       border-radius: 24px;
-      opacity: 0.3;
+      opacity: 0.22;
       z-index: -1;
     }
 
@@ -371,7 +395,7 @@
     }
 
     .about-content p {
-      color: #4a5568;
+      color: var(--muted);
       margin-bottom: 24px;
       font-size: 1.05rem;
     }
@@ -393,7 +417,7 @@
       content: '✓';
       width: 28px;
       height: 28px;
-      background: var(--secondary);
+      background: var(--primary);
       color: var(--white);
       border-radius: 50%;
       display: flex;
@@ -422,7 +446,7 @@
     }
 
     .appointment-info p {
-      color: #718096;
+      color: var(--muted);
       margin-bottom: 32px;
     }
 
@@ -436,7 +460,8 @@
     .contact-icon {
       width: 48px;
       height: 48px;
-      background: var(--light-accent);
+      background: linear-gradient(135deg, rgba(184, 84, 80, 0.12), rgba(36, 76, 124, 0.12));
+      color: var(--accent);
       border-radius: 12px;
       display: flex;
       align-items: center;
@@ -453,15 +478,16 @@
     }
 
     .contact-details p {
-      color: #718096;
+      color: var(--muted);
       margin: 0;
     }
 
     .appointment-form {
-      background: var(--bg);
+      background: linear-gradient(180deg, var(--surface) 0%, var(--surface-alt) 100%);
       border-radius: 24px;
       padding: 40px;
       box-shadow: var(--shadow);
+      border: 1px solid rgba(201, 211, 221, 0.6);
     }
 
     .form-grid {
@@ -490,7 +516,7 @@
     .form-group textarea {
       width: 100%;
       padding: 14px 18px;
-      border: 2px solid #e2e8f0;
+      border: 2px solid #dbe4ec;
       border-radius: 12px;
       font-family: 'Source Sans 3', sans-serif;
       font-size: 1rem;
@@ -502,8 +528,8 @@
     .form-group select:focus,
     .form-group textarea:focus {
       outline: none;
-      border-color: var(--secondary);
-      box-shadow: 0 0 0 4px rgba(87, 197, 182, 0.15);
+      border-color: var(--primary);
+      box-shadow: 0 0 0 4px rgba(36, 76, 124, 0.12);
     }
 
     .form-group textarea {
@@ -513,11 +539,11 @@
 
     .form-group input.error,
     .form-group select.error {
-      border-color: #e53e3e;
+      border-color: var(--accent);
     }
 
     .error-message {
-      color: #e53e3e;
+      color: var(--accent);
       font-size: 0.85rem;
       margin-top: 6px;
       display: none;
@@ -552,14 +578,14 @@
     }
 
     .form-message.success {
-      background: #c6f6d5;
-      color: #22543d;
+      background: #e8f4ec;
+      color: #2d5c42;
       display: block;
     }
 
     .form-message.error {
-      background: #fed7d7;
-      color: #742a2a;
+      background: #f9e7e6;
+      color: #7b3734;
       display: block;
     }
 
@@ -583,7 +609,7 @@
     }
 
     .footer-brand .logo-icon {
-      background: rgba(255,255,255,0.2);
+      background: rgba(184, 84, 80, 0.22);
     }
 
     .footer-brand p {
@@ -701,6 +727,7 @@
         padding: 24px;
         gap: 20px;
         box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        border-top: 1px solid rgba(201, 211, 221, 0.7);
         transform: translateY(-150%);
         transition: transform 0.3s ease;
       }
@@ -740,7 +767,7 @@
         <li><a href="#services">Services</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#appointment">Contact</a></li>
-        <li><a href="#appointment" class="btn">Book Now</a></li>
+        <li><a href="#appointment" class="btn btn-primary">Book Now</a></li>
       </ul>
       <div class="hamburger" id="hamburger">
         <span></span>
@@ -757,8 +784,8 @@
         <h1><br>Your Health Is Our Priority</h1>
         <p>We are here to support you and your family at every stage of life.</p>
         <div class="hero-buttons">
-          <a href="#appointment" class="btn">Schedule Appointment</a>
-          <a href="#services" class="btn">Our Services</a>
+          <a href="#appointment" class="btn btn-primary">Schedule Appointment</a>
+          <a href="#services" class="btn btn-light">Our Services</a>
         </div>
       </div>
       <div class="hero-image">
